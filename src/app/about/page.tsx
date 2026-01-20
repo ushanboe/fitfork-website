@@ -8,7 +8,7 @@ export default function AboutPage() {
     { icon: '🎯', title: 'Mission-Driven', description: 'We believe everyone deserves access to tools that make healthy living simple and enjoyable.' },
     { icon: '🔒', title: 'Privacy First', description: 'Your health data belongs to you. We never sell your information to third parties.' },
     { icon: '💡', title: 'Innovation', description: 'We leverage cutting-edge AI to make food tracking effortless and accurate.' },
-    { icon: '🤝', title: 'Community', description: 'Built with feedback from thousands of users who share our vision for better health.' },
+    { icon: '🤝', title: 'Community', description: 'Built with a passion for helping people achieve their health goals.' },
   ];
 
   const timeline = [
@@ -159,7 +159,7 @@ export default function AboutPage() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Journey?</h2>
           <p className="text-xl text-green-100 mb-8 max-w-2xl mx-auto">
-            Join thousands of users who are already transforming their health with FitFork.
+            Start your health journey today with FitFork — it's completely free.
           </p>
           <a
             href="https://app.fitfork.app"

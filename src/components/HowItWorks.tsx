@@ -16,7 +16,7 @@ const steps = [
     icon: "📸",
     title: "Scan Your Meals",
     description:
-      "Take a photo of your food and our AI will identify it instantly. Or search our database of millions of foods.",
+      "Take a photo of your food and our AI will identify it instantly. Or search for foods manually.",
   },
   {
     number: "03",

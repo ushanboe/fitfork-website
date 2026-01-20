@@ -13,7 +13,7 @@ const features = [
     description:
       "Our advanced AI technology can identify foods from a single photo and instantly calculate nutritional information. No more manual searching or guessing portions.",
     benefits: [
-      "Recognize thousands of foods and dishes",
+      "Recognize a wide variety of foods and dishes",
       "Automatic portion size estimation",
       "Works with home-cooked and restaurant meals",
       "Continuous learning for better accuracy",

@@ -37,7 +37,7 @@ export default function CTA() {
           </h2>
 
           <p className="text-lg sm:text-xl text-primary-100 max-w-2xl mx-auto mb-8">
-            Join thousands of users who have already discovered the smarter way
+            Discover the smarter way
             to track nutrition and achieve their fitness goals.
           </p>
 
