@@ -1,327 +1,208 @@
+'use client';
 
-"use client";
-
-import { motion } from "framer-motion";
-import { useState } from "react";
-
-const iosSteps = [
-  {
-    step: 1,
-    icon: "🌐",
-    title: "Open Safari",
-    description: "Navigate to app.fitfork.app using Safari browser (required for iOS).",
-  },
-  {
-    step: 2,
-    icon: "📤",
-    title: "Tap Share Button",
-    description: "Tap the share button at the bottom of the screen (square with arrow pointing up).",
-  },
-  {
-    step: 3,
-    icon: "➕",
-    title: "Add to Home Screen",
-    description: "Scroll down and tap 'Add to Home Screen' option.",
-  },
-  {
-    step: 4,
-    icon: "✅",
-    title: "Confirm Installation",
-    description: "Tap 'Add' in the top right corner. FitFork is now on your home screen!",
-  },
-];
-
-const androidSteps = [
-  {
-    step: 1,
-    icon: "🌐",
-    title: "Open Chrome",
-    description: "Navigate to app.fitfork.app using Chrome browser.",
-  },
-  {
-    step: 2,
-    icon: "⋮",
-    title: "Open Menu",
-    description: "Tap the three dots menu in the top right corner.",
-  },
-  {
-    step: 3,
-    icon: "📲",
-    title: "Install App",
-    description: "Tap 'Install app' or 'Add to Home screen' option.",
-  },
-  {
-    step: 4,
-    icon: "✅",
-    title: "Confirm Installation",
-    description: "Tap 'Install' in the popup. FitFork is now installed!",
-  },
-];
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function DownloadPage() {
-  const [activeTab, setActiveTab] = useState<"ios" | "android">("ios");
-
-  const steps = activeTab === "ios" ? iosSteps : androidSteps;
-
   return (
-    <div className="pt-20">
+    <main className="min-h-screen bg-gradient-to-br from-green-50 via-white to-orange-50 pt-24">
       {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-b from-primary-50 to-white">
-        <div className="container-custom mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto"
-          >
-            <span className="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full text-sm font-medium mb-4">
-              Download
-            </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-              Get FitFork on{" "}
-              <span className="gradient-text">Your Device</span>
-            </h1>
-            <p className="text-lg sm:text-xl text-gray-600 mb-8">
-              FitFork is a Progressive Web App (PWA) - no app store needed!
-              Install it directly from your browser in seconds.
-            </p>
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center"
+        >
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
+            Get <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-green-600">FitFork</span> Now
+          </h1>
+          <p className="mt-4 text-xl text-gray-600 max-w-2xl mx-auto">
+            Install FitFork on your device and start your health journey today. It&apos;s free, fast, and works offline!
+          </p>
+        </motion.div>
 
-            {/* Quick Launch Button */}
-            <motion.a
-              href="https://app.fitfork.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="btn-primary text-lg px-8 py-4 inline-flex items-center"
-            >
-              <span className="mr-2">🚀</span>
-              Launch FitFork Now
-            </motion.a>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* QR Code Section */}
-      <section className="py-12 bg-white">
-        <div className="container-custom mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex flex-col items-center"
-          >
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Scan to Open on Mobile
-            </h2>
-            <div className="bg-white p-6 rounded-2xl shadow-xl border border-gray-100">
-              {/* QR Code Placeholder - Using a visual representation */}
-              <div className="w-48 h-48 bg-gray-900 rounded-xl p-4 relative">
-                <div className="absolute inset-4 grid grid-cols-7 grid-rows-7 gap-1">
-                  {/* QR Code pattern simulation */}
-                  {Array.from({ length: 49 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className={`rounded-sm ${
-                        [0, 1, 2, 4, 5, 6, 7, 13, 14, 20, 21, 27, 28, 34, 35, 41, 42, 43, 44, 46, 47, 48].includes(i)
-                          ? "bg-white"
-                          : Math.random() > 0.5
-                          ? "bg-white"
-                          : "bg-gray-900"
-                      }`}
-                    />
-                  ))}
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="bg-white rounded-lg p-2">
-                    <span className="text-2xl">🍴</span>
-                  </div>
-                </div>
-              </div>
+        {/* QR Code Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-12 flex justify-center"
+        >
+          <div className="bg-white rounded-3xl shadow-xl p-8 text-center">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Scan to Open App</h2>
+            <div className="bg-white p-4 rounded-2xl inline-block border-4 border-green-500">
+              <Image
+                src="/images/qr-code.png"
+                alt="Scan to open FitFork"
+                width={200}
+                height={200}
+                className="w-48 h-48"
+              />
             </div>
-            <p className="text-gray-500 mt-4 text-sm">
-              Point your camera at the QR code to open app.fitfork.app
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Installation Guide */}
-      <section className="section-padding bg-gray-50">
-        <div className="container-custom mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Installation Guide
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Follow these simple steps to install FitFork on your device.
-            </p>
-          </motion.div>
-
-          {/* Platform Tabs */}
-          <div className="flex justify-center mb-12">
-            <div className="inline-flex bg-white rounded-full p-1 shadow-lg">
-              <button
-                onClick={() => setActiveTab("ios")}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                  activeTab === "ios"
-                    ? "bg-primary-500 text-white shadow-md"
-                    : "text-gray-600 hover:text-gray-900"
-                }`}
-              >
-                🍎 iOS (iPhone/iPad)
-              </button>
-              <button
-                onClick={() => setActiveTab("android")}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                  activeTab === "android"
-                    ? "bg-primary-500 text-white shadow-md"
-                    : "text-gray-600 hover:text-gray-900"
-                }`}
-              >
-                🤖 Android
-              </button>
-            </div>
-          </div>
-
-          {/* Steps */}
-          <div className="max-w-3xl mx-auto">
-            <div className="space-y-6">
-              {steps.map((step, index) => (
-                <motion.div
-                  key={step.step}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex items-start bg-white rounded-2xl p-6 shadow-lg"
-                >
-                  <div className="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center text-2xl mr-4">
-                    {step.icon}
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center mb-1">
-                      <span className="text-sm font-medium text-primary-600 mr-2">
-                        Step {step.step}
-                      </span>
-                    </div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-1">
-                      {step.title}
-                    </h3>
-                    <p className="text-gray-600">{step.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Why a PWA?
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Progressive Web Apps offer the best of both worlds.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: "⚡",
-                title: "Instant Updates",
-                description:
-                  "Always get the latest version automatically. No manual updates needed.",
-              },
-              {
-                icon: "💾",
-                title: "No Storage Bloat",
-                description:
-                  "Takes minimal space on your device compared to traditional apps.",
-              },
-              {
-                icon: "🔒",
-                title: "Secure & Private",
-                description:
-                  "Runs in a secure browser environment with your data protected.",
-              },
-              {
-                icon: "📴",
-                title: "Works Offline",
-                description:
-                  "Full functionality even without internet connection.",
-              },
-              {
-                icon: "🌍",
-                title: "Cross-Platform",
-                description:
-                  "Same great experience on iOS, Android, and desktop.",
-              },
-              {
-                icon: "🚀",
-                title: "Fast & Lightweight",
-                description:
-                  "Loads instantly and runs smoothly on any device.",
-              },
-            ].map((benefit, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center p-6"
-              >
-                <div className="text-4xl mb-4">{benefit.icon}</div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  {benefit.title}
-                </h3>
-                <p className="text-gray-600">{benefit.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="section-padding bg-primary-500">
-        <div className="container-custom mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Ready to Start?
-            </h2>
-            <p className="text-lg text-primary-100 mb-8 max-w-2xl mx-auto">
-              Launch FitFork now and begin your journey to healthier eating.
-            </p>
+            <p className="mt-4 text-gray-500">Point your camera at the QR code</p>
             <a
               href="https://app.fitfork.app"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-primary-600 bg-white rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+              className="mt-6 inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-green-500 to-green-600 rounded-full hover:shadow-xl hover:shadow-green-500/30 transition-all duration-300 hover:-translate-y-1"
             >
-              Open FitFork 🍴
+              Or Click to Launch App 🚀
             </a>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Installation Instructions */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <motion.h2
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-3xl font-bold text-center text-gray-900 mb-12"
+        >
+          Install as an App
+        </motion.h2>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* iOS Instructions */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="bg-white rounded-3xl shadow-lg p-8"
+          >
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center">
+                <svg className="w-10 h-10 text-gray-800" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900">iPhone / iPad</h3>
+                <p className="text-gray-500">iOS Installation</p>
+              </div>
+            </div>
+
+            <ol className="space-y-4">
+              <li className="flex gap-4">
+                <span className="flex-shrink-0 w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center font-bold">1</span>
+                <div>
+                  <p className="font-medium text-gray-900">Open in Safari</p>
+                  <p className="text-gray-500 text-sm">Visit app.fitfork.app in Safari browser</p>
+                </div>
+              </li>
+              <li className="flex gap-4">
+                <span className="flex-shrink-0 w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center font-bold">2</span>
+                <div>
+                  <p className="font-medium text-gray-900">Tap Share Button</p>
+                  <p className="text-gray-500 text-sm">Tap the share icon at the bottom of Safari</p>
+                </div>
+              </li>
+              <li className="flex gap-4">
+                <span className="flex-shrink-0 w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center font-bold">3</span>
+                <div>
+                  <p className="font-medium text-gray-900">Add to Home Screen</p>
+                  <p className="text-gray-500 text-sm">Scroll down and tap &quot;Add to Home Screen&quot;</p>
+                </div>
+              </li>
+              <li className="flex gap-4">
+                <span className="flex-shrink-0 w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center font-bold">4</span>
+                <div>
+                  <p className="font-medium text-gray-900">Tap Add</p>
+                  <p className="text-gray-500 text-sm">Confirm by tapping &quot;Add&quot; in the top right</p>
+                </div>
+              </li>
+            </ol>
+          </motion.div>
+
+          {/* Android Instructions */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="bg-white rounded-3xl shadow-lg p-8"
+          >
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center">
+                <svg className="w-10 h-10 text-green-600" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.523 15.341c-.5 0-.91.41-.91.91s.41.91.91.91.91-.41.91-.91-.41-.91-.91-.91zm-11.046 0c-.5 0-.91.41-.91.91s.41.91.91.91.91-.41.91-.91-.41-.91-.91-.91zm11.405-6.02l1.9-3.29c.11-.18.05-.42-.13-.53-.18-.11-.42-.05-.53.13l-1.92 3.33c-1.45-.66-3.08-1.03-4.81-1.03s-3.36.37-4.81 1.03l-1.92-3.33c-.11-.18-.35-.24-.53-.13-.18.11-.24.35-.13.53l1.9 3.29C3.35 10.97 1.18 14.27 1 18h22c-.18-3.73-2.35-7.03-5.12-8.68z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900">Android</h3>
+                <p className="text-gray-500">Android Installation</p>
+              </div>
+            </div>
+
+            <ol className="space-y-4">
+              <li className="flex gap-4">
+                <span className="flex-shrink-0 w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center font-bold">1</span>
+                <div>
+                  <p className="font-medium text-gray-900">Open in Chrome</p>
+                  <p className="text-gray-500 text-sm">Visit app.fitfork.app in Chrome browser</p>
+                </div>
+              </li>
+              <li className="flex gap-4">
+                <span className="flex-shrink-0 w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center font-bold">2</span>
+                <div>
+                  <p className="font-medium text-gray-900">Tap Menu</p>
+                  <p className="text-gray-500 text-sm">Tap the three dots in the top right corner</p>
+                </div>
+              </li>
+              <li className="flex gap-4">
+                <span className="flex-shrink-0 w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center font-bold">3</span>
+                <div>
+                  <p className="font-medium text-gray-900">Install App</p>
+                  <p className="text-gray-500 text-sm">Tap &quot;Install app&quot; or &quot;Add to Home screen&quot;</p>
+                </div>
+              </li>
+              <li className="flex gap-4">
+                <span className="flex-shrink-0 w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center font-bold">4</span>
+                <div>
+                  <p className="font-medium text-gray-900">Confirm Install</p>
+                  <p className="text-gray-500 text-sm">Tap &quot;Install&quot; in the popup dialog</p>
+                </div>
+              </li>
+            </ol>
           </motion.div>
         </div>
       </section>
-    </div>
+
+      {/* PWA Benefits */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-gradient-to-r from-green-500 to-green-600 rounded-3xl p-8 md:p-12 text-white"
+        >
+          <h2 className="text-3xl font-bold mb-8 text-center">Why Install as an App?</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <span className="text-3xl">⚡</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Lightning Fast</h3>
+              <p className="text-green-100">Loads instantly, just like a native app</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <span className="text-3xl">📴</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Works Offline</h3>
+              <p className="text-green-100">Access your data even without internet</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <span className="text-3xl">🔔</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Home Screen Icon</h3>
+              <p className="text-green-100">Quick access from your home screen</p>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+    </main>
   );
 }
