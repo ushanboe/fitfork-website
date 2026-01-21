@@ -47,7 +47,7 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-4">Connect</h3>
             <ul className="space-y-2">
-              <li><a href="mailto:hello@fitfork.app" className="hover:text-green-400 transition-colors">Contact Us</a></li>
+              <li><a href="mailto:help@fitfork.app" className="hover:text-green-400 transition-colors">Contact Us</a></li>
               <li><a href="#" className="hover:text-green-400 transition-colors">Twitter</a></li>
               <li><a href="#" className="hover:text-green-400 transition-colors">Instagram</a></li>
             </ul>
