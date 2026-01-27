@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion } from "framer-motion";
@@ -21,6 +20,18 @@ export default function CTA() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
+          {/* PWA Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center px-4 py-2 bg-white/10 border border-white/20 rounded-full mb-6"
+          >
+            <span className="text-white text-sm font-medium">
+              🎉 Now Available as a Progressive Web App
+            </span>
+          </motion.div>
+
           {/* Emoji decoration */}
           <motion.div
             animate={{ rotate: [0, 10, -10, 0] }}
@@ -38,7 +49,7 @@ export default function CTA() {
 
           <p className="text-lg sm:text-xl text-primary-100 max-w-2xl mx-auto mb-8">
             Discover the smarter way
-            to track nutrition and achieve their fitness goals.
+            to track nutrition and achieve your fitness goals.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

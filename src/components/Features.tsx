@@ -1,132 +1,223 @@
-
 "use client";
 
 import { motion } from "framer-motion";
+import { Camera, Barcode, Apple, Droplets, Scale, Dumbbell, Heart, Cloud, Smartphone, Download } from "lucide-react";
+import Image from "next/image";
 
-const features = [
+const mainFeatures = [
   {
-    icon: "📸",
-    title: "AI Food Scanner",
-    description:
-      "Snap a photo of any meal and let our AI instantly identify ingredients and calculate nutrition facts.",
+    title: "Food Scanner",
+    subtitle: "Powered with AI",
+    description: "Take a photo and immediately see calculated nutritional data.",
+    image: "/images/person_taking_photo__food.jpeg",
+    stat: "AI Powered",
   },
   {
-    icon: "📊",
-    title: "Nutrition Tracking",
-    description:
-      "Track calories, macros, and micronutrients with beautiful charts and insights to reach your goals.",
+    title: "Recipes",
+    subtitle: "Discover & Create",
+    description: "Discover and Save recipes, or create your own.",
+    image: "/images/recipe_book.jpeg",
+    stat: "1000+ Recipes",
   },
   {
-    icon: "📖",
-    title: "Recipe Management",
-    description:
-      "Save, organize, and discover healthy recipes. Import from URLs or create your own masterpieces.",
-  },
-  {
-    icon: "⚖️",
     title: "Weight Tracking",
-    description:
-      "Monitor your progress with weight logging, trend analysis, and goal setting features.",
-  },
-  {
-    icon: "🏃",
-    title: "Strava Integration",
-    description:
-      "Sync your workouts from Strava to get accurate calorie burn data and complete health picture.",
-  },
-  {
-    icon: "☁️",
-    title: "Cloud Sync",
-    description:
-      "Your data syncs securely across all devices. Never lose your progress, access anywhere.",
-  },
-  {
-    icon: "🎯",
-    title: "Smart Goals",
-    description:
-      "Set personalized nutrition and fitness goals with AI-powered recommendations.",
-  },
-  {
-    icon: "📱",
-    title: "Works Offline",
-    description:
-      "Full PWA support means you can track meals even without internet connection.",
+    subtitle: "Track Progress",
+    description: "See how your weight is tracking with visual charts and insights.",
+    image: "/images/weight_scale.jpeg",
+    stat: "Visual Charts",
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
+const additionalFeatures = [
+  {
+    icon: Barcode,
+    title: "Barcode Scanner",
+    description: "Scan ingredients and food products and see nutritional data.",
   },
-};
+  {
+    icon: Apple,
+    title: "Nutrition Tracking",
+    description: "Track your intake of protein, fats, calories.",
+  },
+  {
+    icon: Droplets,
+    title: "Hydration",
+    description: "Track your daily hydration, and keep your fish in water!",
+  },
+  {
+    icon: Dumbbell,
+    title: "Fitness Tracking",
+    description: "Over 50 Exercise Types loaded. Garmin Connect Integration Coming Soon.",
+  },
+  {
+    icon: Heart,
+    title: "Menstrual Cycle Tracking",
+    description: "Ladies - keep all your health tracking in one app!",
+  },
+  {
+    icon: Cloud,
+    title: "Cloud Sync",
+    description: "Seamlessly sync your data across all your devices with secure cloud backup.",
+    image: "/images/phone_tablet_pc.jpeg",
+  },
+];
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-    },
+const steps = [
+  {
+    number: "01",
+    title: "Install the App",
+    description: "Add FitFork to your home screen in seconds. It's a Progressive Web App that works on any device.",
   },
-};
+  {
+    number: "02",
+    title: "Scan Your Meals",
+    description: "Add your API Keys, Take a photo of your food and our AI will identify it instantly. Or download recipes and see nutritional data.",
+  },
+  {
+    number: "03",
+    title: "Track and Improve",
+    description: "Monitor your progress, set goals, and watch your health transform over time.",
+  },
+];
 
 export default function Features() {
   return (
-    <section className="section-padding bg-white">
-      <div className="container-custom mx-auto">
+    <section id="features" className="py-20 bg-slate-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full text-sm font-medium mb-4">
-            Features
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Everything You Need to{" "}
-            <span className="gradient-text">Eat Better</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            One App,{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">
+              Complete Wellness
+            </span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            FitFork combines powerful tracking tools with intelligent insights
-            to make healthy eating effortless and enjoyable.
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Everything you need to transform your health and fitness journey in one powerful app.
           </p>
         </motion.div>
 
-        {/* Features Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
-          {features.map((feature, index) => (
+        {/* Main Feature Cards */}
+        <div className="grid md:grid-cols-3 gap-8 mb-20">
+          {mainFeatures.map((feature, index) => (
             <motion.div
-              key={index}
-              variants={itemVariants}
-              className="group"
+              key={feature.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.2 }}
+              className="group relative bg-slate-800/50 rounded-3xl overflow-hidden border border-slate-700 hover:border-emerald-500/50 transition-all"
             >
-              <div className="h-full p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:bg-white hover:shadow-xl hover:border-primary-100 transition-all duration-300">
-                <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-3xl mb-4 shadow-sm group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
-                  {feature.icon}
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src={feature.image}
+                  alt={feature.title}
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent" />
+                <div className="absolute bottom-4 left-4">
+                  <span className="bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full text-sm font-medium">
+                    {feature.stat}
+                  </span>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {feature.description}
-                </p>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-white mb-1">{feature.title}</h3>
+                <p className="text-emerald-400 text-sm mb-3">{feature.subtitle}</p>
+                <p className="text-gray-400 text-sm mb-4">{feature.description}</p>
+                <button className="text-emerald-400 hover:text-emerald-300 font-medium text-sm transition-colors">
+                  Learn More →
+                </button>
               </div>
             </motion.div>
           ))}
+        </div>
+
+        {/* Additional Features Grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <h3 className="text-2xl font-bold text-white mb-4">Powerful Features</h3>
+          <p className="text-gray-400">Everything you need to succeed</p>
+        </motion.div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+          {additionalFeatures.map((feature, index) => (
+            <motion.div
+              key={feature.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="bg-slate-800/30 p-6 rounded-2xl border border-slate-700/50 hover:border-emerald-500/30 transition-all group"
+            >
+              <div className="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-emerald-500/20 transition-colors">
+                <feature.icon className="w-6 h-6 text-emerald-400" />
+              </div>
+              <h4 className="text-white font-semibold mb-2">{feature.title}</h4>
+              <p className="text-gray-400 text-sm">{feature.description}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* 3 Simple Steps Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+            Start Your Journey in{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">
+              3 Simple Steps
+            </span>
+          </h3>
+        </motion.div>
+
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
+          {steps.map((step, index) => (
+            <motion.div
+              key={step.number}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.2 }}
+              className="relative bg-slate-800/30 p-8 rounded-3xl border border-slate-700/50 hover:border-emerald-500/30 transition-all text-center"
+            >
+              <div className="text-6xl font-bold text-emerald-500/20 mb-4">{step.number}</div>
+              <h4 className="text-xl font-bold text-white mb-3">{step.title}</h4>
+              <p className="text-gray-400">{step.description}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Final CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center bg-gradient-to-r from-emerald-500/10 to-teal-500/10 rounded-3xl p-12 border border-emerald-500/20"
+        >
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+            Ready to Transform Your Health Journey?
+          </h3>
+          <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
+            Discover the smarter way to track nutrition and achieve fitness goals
+          </p>
+          <button className="flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-xl font-semibold transition-all hover:scale-105 mx-auto">
+            <Download size={20} />
+            Get Started Now
+          </button>
         </motion.div>
       </div>
     </section>
